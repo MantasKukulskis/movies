@@ -39,7 +39,7 @@ https://git-scm.com
 Would like to run this project locally? Open terminal and follow these steps:
 
 Clone the repo
-git clone https://github.com/RokasIme/54-grupe-movies.git
+git clone https://github.com/MantasKukulskis/movies.git
 Install NPM packages
 npm i
 or
@@ -50,7 +50,7 @@ npm run dev
 There is no tests for this project.
 
 🎅 Authors
-Rokas: Github
+MAnrtas: https://github.com/MantasKukulskis
 
 ⚠️ License
 Distributed under the MIT License. See LICENSE.txt for more information.
