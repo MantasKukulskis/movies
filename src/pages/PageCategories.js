@@ -2,14 +2,13 @@ import { categoriesList } from "../components/categoriesList.js";
 import { PageTemplate } from "../templates/PageTemplate.js";
 
 export class PageCategories extends PageTemplate {
-  constructor(req) {
-    super();
-    this.req = req;
-    this.activeMenuIndex = 2;
-  }
+    constructor(req) {
+        super(req);
+        this.activeMenuIndex = 2;
+    }
 
-  main() {
-    return `
+    main() {
+        return `
             <main>
                 <div class="container">
                     <div class="row">
@@ -40,5 +39,5 @@ export class PageCategories extends PageTemplate {
                     </div>
                 </div>
             </main>`;
-  }
+    }
 }

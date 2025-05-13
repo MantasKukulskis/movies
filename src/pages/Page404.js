@@ -1,9 +1,12 @@
-
 import { PageTemplate } from "../templates/PageTemplate.js";
 
 export class Page404 extends PageTemplate {
-  main() {
-    return `
+    constructor(req) {
+        super(req);
+    }
+
+    main() {
+        return `
             <main>
                 <div class="container">
                     <div class="row">
@@ -14,5 +17,5 @@ export class Page404 extends PageTemplate {
                     </div>
                 </div>
             </main>`;
-  }
+    }
 }

@@ -2,13 +2,13 @@ import { categoriesList } from "../components/categoriesList.js";
 import { PageTemplate } from "../templates/PageTemplate.js";
 
 export class PageHome extends PageTemplate {
-  constructor() {
-    super();
-    this.activeMenuIndex = 0;
-  }
+    constructor(req) {
+        super(req);
+        this.activeMenuIndex = 0;
+    }
 
-  heroSection() {
-    return `
+    heroSection() {
+        return `
             <div class="container px-4 py-5">
                 <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
                     <div class="col-10 col-sm-8 col-lg-6">
@@ -21,10 +21,10 @@ export class PageHome extends PageTemplate {
                     </div>
                 </div>
             </div>`;
-  }
+    }
 
-  featuredMovieCategoriesSection() {
-    return `
+    featuredMovieCategoriesSection() {
+        return `
             <style>
                 .feature-icon {
                     width: 4rem;
@@ -45,17 +45,15 @@ export class PageHome extends PageTemplate {
             </style>
             <div class="container px-4 py-5" id="featured-3">
                 <h2 class="pb-2 border-bottom">Movies by category</h2>
-                <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">${categoriesList(
-                  3
-                )}</div>
+                <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">${categoriesList(3)}</div>
             </div>`;
-  }
+    }
 
-  main() {
-    return `
+    main() {
+        return `
             <main>
                 ${this.heroSection()}
                 ${this.featuredMovieCategoriesSection()}
             </main>`;
-  }
+    }
 }

@@ -3,52 +3,43 @@ import { formatMovieDuration } from "../lib/formatMovieDuration.js";
 import { PageTemplate } from "../templates/PageTemplate.js";
 
 export class PageMovies extends PageTemplate {
-  constructor(req) {
-    super();
-    this.req = req;
-    this.activeMenuIndex = 1;
-  }
+    constructor(req) {
+        super(req);
+        this.activeMenuIndex = 1;
+    }
 
-  moviesList(category) {
-    let HTML = "";
+    moviesList(category) {
+        let HTML = '';
 
-    for (const item of moviesData) {
-      if (item.category === category || category === "All movies") {
-        HTML += `
+        for (const item of moviesData) {
+            if (item.category === category || category === 'All movies') {
+                HTML += `
                     <div class="col">
                         <div class="card shadow-sm">
-                            <img src="/img/${
-                              item.thumbnail
-                            }" class="card-img-top" style="height: 225px;">
+                            <img src="/img/movie-thumbnails/${item.thumbnail}" class="movie-card-thumbnail card-img-top" style="height: 225px;">
                             <div class="card-body">
-                                <a href="/movies/${item.slug}" class="h4">${
-          item.title
-        }</a>
+                                <a href="/movies/${item.slug}" class="h4">${item.title}</a>
                                 <p class="card-text">${item.description}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <a href="/movies/${
-                                          item.slug
-                                        }" class="btn btn-sm btn-outline-secondary">Read more</a>
+                                        <a href="/movies/${item.slug}" class="btn btn-sm btn-outline-secondary">Read more</a>
                                     </div>
-                                    <small class="text-body-secondary">${formatMovieDuration(
-                                      item.durationInMinutes
-                                    )}</small>
+                                    <small class="text-body-secondary">${formatMovieDuration(item.durationInMinutes)}</small>
                                 </div>
                             </div>
                         </div>
                     </div>`;
-      }
-    }
+            }
+        }
 
-    if (HTML) {
-      return `
+        if (HTML) {
+            return `
                 <div class="container">
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">${HTML}</div>
                 </div>`;
-    }
+        }
 
-    return `
+        return `
             <div class="container">
                 <div class="row">
                     <p class="col-12">No movies found for this genre :(</p>
@@ -57,20 +48,20 @@ export class PageMovies extends PageTemplate {
                     </div>
                 </div>
             </div>`;
-  }
-
-  main() {
-    let category = "";
-
-    if (this.req?.params?.categoryName) {
-      category = this.req.params.categoryName;
     }
 
-    const title = category
-      ? category[0].toUpperCase() + category.slice(1)
-      : "All movies";
+    main() {
+        let category = '';
 
-    return `
+        if (this.req?.params?.categoryName) {
+            category = this.req.params.categoryName;
+        }
+
+        const title = category
+            ? (category[0].toUpperCase() + category.slice(1))
+            : 'All movies';
+
+        return `
             <main>
                 <div class="container">
                     <div class="row">
@@ -81,5 +72,5 @@ export class PageMovies extends PageTemplate {
                 </div>
                 ${this.moviesList(title)}
             </main>`;
-  }
+    }
 }
