@@ -1,4 +1,3 @@
-
 import { connection } from "../../db.js";
 
 export async function getAllCategories() {
